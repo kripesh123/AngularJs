@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Angular Js</title>
+	<script type="text/javascript" src="js/libs/angular.min.js"></script>
+</head>
+<body ng-app="app">
+
+<div ng-controller="HomeController">
+	<h1>{{title}}</h1>
+	<label>Course:</label>
+	<input type="text" ng-model="title">
+
+	<ul ng-repeat="c in colors">
+		<li ng-bind="c"></li>
+	</ul>
+
+	<ul ng-repeat="c in colors">
+		<li>{{c | lowercase}}</li>
+	</ul>
+
+	<div>
+		<input type="text" ng-model="color" placeholder="Add Color"/>
+		<button type="submit" ng-click="addColor()">ADD</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+var app=angular.module("app",[]);
+
+app.controller("HomeController",function($scope){
+	$scope.title="Angular Project";
+	$scope.colors=['Red','Blue','Yellow'];
+
+	$scope.addColor=function(){
+		$scope.colors.push($scope.color);
+	}
+});
+
+</script>
+</body>
+</html>
